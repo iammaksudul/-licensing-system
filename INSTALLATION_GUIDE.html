@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Licensing System - Installation & Configuration Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-primary">Licensing System - Installation & Configuration Guide</h1>
+        <p>This guide walks you through installing, configuring, and securing the Licensing System. Follow these steps to get your system up and running smoothly.</p>
+
+        <h2>1. Prerequisites</h2>
+        <p>Before you begin, ensure that your environment meets the following requirements:</p>
+        <ul>
+            <li>PHP 7.4+ installed</li>
+            <li>MySQL or MariaDB database</li>
+            <li>Composer (for PHP dependency management)</li>
+            <li>SMTP server details for email notifications</li>
+            <li>PayPal or Stripe credentials for payment gateway (optional)</li>
+        </ul>
+
+        <h2>2. Installation Steps</h2>
+        <p>Follow these steps to install the Licensing System on your server or local machine:</p>
+        <ol>
+            <li>Clone the repository:
+                <pre><code>git clone https://github.com/your-repo/licensing-system.git</code></pre>
+            </li>
+            <li>Navigate to the project folder:
+                <pre><code>cd licensing-system</code></pre>
+            </li>
+            <li>Install Composer dependencies:
+                <pre><code>composer install</code></pre>
+            </li>
+            <li>Copy the <code>.env.example</code> file to <code>.env</code>:
+                <pre><code>cp .env.example .env</code></pre>
+                This file will store your environment variables such as database credentials and API keys.
+            </li>
+            <li>Set up your database by importing the schema:
+                <pre><code>mysql -u root -p licensing_system < schema.sql</code></pre>
+                Or use phpMyAdmin or another MySQL client to import the `schema.sql` file.
+            </li>
+        </ol>
+
+        <h2>3. Configuration Steps</h2>
+        <p>After installation, follow these steps to configure the system:</p>
+
+        <h3>3.1 Configure the .env File</h3>
+        <p>The <code>.env</code> file contains sensitive configurations, including database credentials, payment settings, and SMTP details. Open the <code>.env</code> file in a text editor and configure the following settings:</p>
+        <ul>
+            <li><strong>Database Settings:</strong> Set the database host, name, username, and password.</li>
+            <pre><code>
+DB_HOST=localhost
+DB_NAME=licensing_system
+DB_USERNAME=root
+DB_PASSWORD=yourpassword
+            </code></pre>
+            <li><strong>SMTP Settings:</strong> Configure your SMTP server for sending emails (order confirmations, license activations, etc.).</li>
+            <pre><code>
+SMTP_HOST=smtp.yourmailserver.com
+SMTP_USERNAME=your-email@example.com
+SMTP_PASSWORD=your-email-password
+SMTP_PORT=587
+SMTP_SECURE=tls
+            </code></pre>
+            <li><strong>Payment Gateway Settings:</strong> Add your PayPal or Stripe credentials for payment processing.</li>
+            <pre><code>
+PAYPAL_CLIENT_ID=your-paypal-client-id
+PAYPAL_SECRET=your-paypal-secret
+            </code></pre>
+            <li><strong>JWT Secret Key:</strong> Set a secure secret key for JWT authentication.</li>
+            <pre><code>
+JWT_SECRET_KEY=your-secret-key
+            </code></pre>
+        </ul>
+
+        <h3>3.2 Configure the Database Connection</h3>
+        <p>If you're using MySQL or MariaDB, ensure that your database credentials in the <code>.env</code> file match the actual database you created during installation. Ensure the database server is running and accessible from your project folder.</p>
+
+        <h3>3.3 Set up PayPal or Stripe Payment Gateway (Optional)</h3>
+        <p>If you're using PayPal or Stripe for payments, ensure that the credentials in the <code>.env</code> file are accurate:</p>
+        <ul>
+            <li><strong>PayPal:</strong> Set your PayPal client ID and secret in the `.env` file.</li>
+            <li><strong>Stripe:</strong> Similarly, set your Stripe keys for payment processing.</li>
+        </ul>
+
+        <h3>3.4 Configure Email Notifications</h3>
+        <p>For email notifications (e.g., order confirmations, license activations), ensure that your SMTP settings are correctly configured in the <code>.env</code> file. You can use services like Gmail, SendGrid, or your own SMTP server.</p>
+
+        <h3>3.5 Configure SSL for Secure Connections</h3>
+        <p>Ensure that your site is served over HTTPS by enabling SSL. This is critical for securing sensitive data, especially during user logins and payment transactions. If you're using Apache, you can enable SSL using the following command:</p>
+        <pre><code>sudo a2enmod ssl && sudo systemctl restart apache2</code></pre>
+
+        <h2>4. Test the System</h2>
+        <p>After completing the configuration steps, access the system in your browser:</p>
+        <ol>
+            <li>Open your browser and go to <code>http://localhost</code> (or the domain where you hosted the system).</li>
+            <li>Log in using the admin credentials you created during installation, and navigate through the admin panel to manage products, orders, and clients.</li>
+            <li>Test the client panel by logging in as a client and verifying that the order, license management, and ticket systems work properly.</li>
+        </ol>
+
+        <h2>5. Troubleshooting</h2>
+        <p>If you encounter any issues during installation or configuration, check the following:</p>
+        <ul>
+            <li><strong>Database Connection Errors:</strong> Ensure that your database credentials in the <code>.env</code> file are correct and that the database server is running.</li>
+            <li><strong>Payment Gateway Errors:</strong> Double-check your PayPal or Stripe credentials in the <code>.env</code> file.</li>
+            <li><strong>SMTP Errors:</strong> Ensure that your SMTP credentials are correct and that your email server allows third-party applications to send emails.</li>
+        </ul>
+
+        <h2>6. Next Steps</h2>
+        <p>Once the system is running and fully configured, you can:</p>
+        <ul>
+            <li>Integrate additional payment methods (e.g., Bitcoin, bank transfer).</li>
+            <li>Enhance security features like two-factor authentication (2FA) for clients and admins.</li>
+            <li>Scale the system for production by setting up a proper web server (e.g., Apache or Nginx) and a cloud database.</li>
+        </ul>
+
+        <footer class="mt-4">
+            <p>&copy; 2025 Licensing System. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

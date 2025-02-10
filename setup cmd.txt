@@ -1,0 +1,12 @@
+How to Use the Script:
+Save the script as setup.sh.
+Make it executable:
+bash
+Copy
+Edit
+chmod +x setup.sh
+Run the script:
+bash
+Copy
+Edit
+./setup.sh

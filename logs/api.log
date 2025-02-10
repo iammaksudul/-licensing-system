@@ -1,0 +1,4 @@
+# Example format for API logs
+# [DATE] "REQUEST_METHOD API_URL" RESPONSE_CODE "RESPONSE_BODY"
+[01/Feb/2025:10:30:10 +0000] "POST /api/orders.php" 200 '{"status":"success","message":"Order placed successfully"}'
+[01/Feb/2025:10:35:15 +0000] "GET /api/products.php" 200 '{"status":"success","products":[{"id":1,"name":"Product A","price":19.99}]}'

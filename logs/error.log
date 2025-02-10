@@ -1,0 +1,3 @@
+# Example format for error logs
+# [DATE] ERROR_TYPE MESSAGE
+[01/Feb/2025:10:20:05 +0000] PHP Fatal error: Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost'

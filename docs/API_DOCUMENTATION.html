@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation - Licensing System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-primary">API Documentation</h1>
+        <p>This document provides information about the available API endpoints for the Licensing System.</p>
+
+        <h2>Table of Contents</h2>
+        <ul>
+            <li><a href="#authentication">Authentication</a></li>
+            <li><a href="#validate-license">License Validation</a></li>
+            <li><a href="#orders">Orders</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#clients">Clients</a></li>
+        </ul>
+
+        <h2 id="authentication">Authentication</h2>
+        <p>Endpoint: <code>/api/auth.php</code></p>
+        <p>Method: POST</p>
+        <p>Request Body:</p>
+        <pre>
+{
+    "email": "user@example.com",
+    "password": "password123"
+}
+        </pre>
+        <p>Response:</p>
+        <pre>
+{
+    "status": "success",
+    "user_id": 123,
+    "role": "client"
+}
+        </pre>
+
+        <h2 id="validate-license">License Validation</h2>
+        <p>Endpoint: <code>/api/validate_license.php</code></p>
+        <p>Method: POST</p>
+        <p>Request Body:</p>
+        <pre>
+{
+    "license_key": "ABC123XYZ"
+}
+        </pre>
+        <p>Response:</p>
+        <pre>
+{
+    "status": "valid",
+    "message": "License is valid."
+}
+        </pre>
+
+        <h2 id="orders">Orders</h2>
+        <p>Endpoint: <code>/api/orders.php</code></p>
+        <p>Method: POST</p>
+        <p>Request Body:</p>
+        <pre>
+{
+    "product_id": 1,
+    "quantity": 2
+}
+        </pre>
+        <p>Response:</p>
+        <pre>
+{
+    "status": "success",
+    "message": "Order placed successfully."
+}
+        </pre>
+
+        <h2 id="products">Products</h2>
+        <p>Endpoint: <code>/api/products.php</code></p>
+        <p>Method: GET</p>
+        <p>Response:</p>
+        <pre>
+{
+    "status": "success",
+    "products": [
+        {"id": 1, "name": "Product A", "price": 19.99},
+        {"id": 2, "name": "Product B", "price": 29.99}
+    ]
+}
+        </pre>
+
+        <h2 id="clients">Clients</h2>
+        <p>Endpoint: <code>/api/clients.php</code></p>
+        <p>Method: GET</p>
+        <p>Response:</p>
+        <pre>
+{
+    "status": "success",
+    "clients": [
+        {"id": 123, "name": "Client A", "email": "clientA@example.com"},
+        {"id": 124, "name": "Client B", "email": "clientB@example.com"}
+    ]
+}
+        </pre>
+
+        <footer class="mt-4">
+            <p>&copy; 2025 Licensing System. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
